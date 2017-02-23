@@ -3,12 +3,34 @@
 <html lang="en" ng-app="RockPaperScissorsApp">
 
     <head>
-
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
     </head>
 
     <body>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="">Sign In</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main>
+            <div class="container">
+                <div ui-view>
+                </div>
+            </div>
+
+        </main>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+        <script src="js/ui-bootstrap-tpls-2.5.0.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="socket.js"></script>
         <script src="app.js"></script>
     </body>
 
