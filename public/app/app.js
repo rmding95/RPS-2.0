@@ -18,9 +18,25 @@ var rockPaperScissorsApp = angular.module('RockPaperScissorsApp', ['ui.router', 
 })
 
 .controller('HomeController', ['$scope', 'socket', function($scope, socket) {
-    socket.emit('test', 'fuck');
-    socket.on('test1', function(data){
-        console.log(data);
+    $scope.chatMessages = [];
+    socket.on('sendUserId', function(id) {
+        $scope.id = id;
     });
+    socket.on('updatePlayerCount', function(count){
+        $scope.playerCount = count;
+    });
+    socket.on('updateChatUsernames', function(users) {
+        $scope.users = users;
+    });
+    socket.on('broadcastChat', function(message, name) {
+        $scope.chatMessages.push(name + ": " + message);
+    });
+
+    $scope.sendChat = function(event) {
+        // check if key pressed was enter
+        if (event.which === 13) {
+            socket.emit('sendChat', $scope.chatInput, $scope.users[$scope.id]);
+        }
+    }
 }])
 

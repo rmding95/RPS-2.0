@@ -6,7 +6,7 @@
 
         <div>
             <div>
-                <p><span id="numplayers">5</span> players</p>
+                <p>{{playerCount}} players</p>
             </div>
             <div>
                 <p><span id="numgames">10</span> games in play</p>
@@ -45,14 +45,23 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-4">
         <div class="chat-area">
-
+            <ul ng-repeat="(id, name) in users">
+                <li>{{name}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="chat-area">
+            <ul ng-repeat="message in chatMessages track by $index">
+                <li>{{message}}</li>
+            </ul>
         </div>
     </div>
 
     <div class="col-md-9">
-        <input type="text" class="form-control input-lg" placeholder="Chat here...">
+        <input type="text" class="form-control input-lg" placeholder="Chat here..." ng-keypress="sendChat($event)" ng-model="chatInput">
     </div>
     <div class="col-md-3">
         <button type="button" class="btn btn-success">Send Message</button>

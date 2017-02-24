@@ -14,4 +14,5 @@ body {
     height: 200px;
     border: 3px solid black;
     border-radius: 5px;
+    overflow: scroll;
 }
